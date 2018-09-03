@@ -1,7 +1,10 @@
 package com.jetlee.threadtest;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 
 public class BaseThread {
@@ -13,6 +16,7 @@ public class BaseThread {
 //        Executor是超接口，ExecutorService是Executor的子接口,创建的线程都会返回ThreadPoolExecutor
         executorCache();
         executorFixed();
+        callable();
     }
 
     private static void thread() {
@@ -90,6 +94,24 @@ public class BaseThread {
             executorService.execute(runnable);
         }
         executorService.shutdown();
+    }
+
+    private static void callable() {
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return "来了来了";
+            }
+        };
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        Future<String> future = executor.submit(callable);
+        try {
+            String result = future.get();
+            System.out.println("println result:" + result);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     private String testString;
