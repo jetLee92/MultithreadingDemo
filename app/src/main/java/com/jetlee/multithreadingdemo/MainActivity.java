@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 });
         Log.e("1000", "看看吧");
 //        Observable.map()
-
+// 看看这是提交到哪个分支的
     }
 
     private class MyHandler extends Handler {
