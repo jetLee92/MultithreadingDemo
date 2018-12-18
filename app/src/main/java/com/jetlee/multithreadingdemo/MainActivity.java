@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text);
 
+        // 提交到master的信息
+
         handler = new MyHandler();
         handler.sendMessage(new Message());
 //        NewThreadWorker
