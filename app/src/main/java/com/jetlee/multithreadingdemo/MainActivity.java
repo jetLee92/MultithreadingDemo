@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new MyHandler();
         handler.sendMessage(new Message());
+        // 这是test2的提交
 //        NewThreadWorker
         Single.just(1)
 //                .subscribeOn()
