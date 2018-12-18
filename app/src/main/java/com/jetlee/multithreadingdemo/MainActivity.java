@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         handler = new MyHandler();
         handler.sendMessage(new Message());
 //        NewThreadWorker
+
+        // 分支测试1
+
         Single.just(1)
 //                .subscribeOn()
                 .map(new Function<Integer, String>() {
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
 
                     }
+
+
+                    // 测试2
 
                     @Override
                     public void onSuccess(String s) {
