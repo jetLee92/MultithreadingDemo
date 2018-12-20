@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
 
                     }
-
+                        //测试远程分支
                     @Override
                     public void onSuccess(String s) {
 
