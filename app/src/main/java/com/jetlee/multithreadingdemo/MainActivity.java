@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("1000", "来了位");
             textView.setText("来到了Handler");
             // 是不是真的啊
+            // 第二次看看
         }
     }
 
