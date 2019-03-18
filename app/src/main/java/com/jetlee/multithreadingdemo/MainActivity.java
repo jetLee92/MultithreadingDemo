@@ -7,17 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.internal.schedulers.NewThreadWorker;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler;
 
-    private TextView textView;
+    private static TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text);
 
-        // 提交到master的信息
-
         handler = new MyHandler();
         handler.sendMessage(new Message());
-//        NewThreadWorker
         Single.just(1)
-//                .subscribeOn()
-                .map(new Function<Integer, String>() {
-                    @Override
-                    public String apply(Integer integer) {
-                        return String.valueOf(integer);
-                    }
-                })
+                .map(integer -> String.valueOf(integer))
                 .subscribe(new SingleObserver<String>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -55,12 +43,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         Log.e("1000", "看看吧");
-//        Observable.map()
-// 看看这是提交到哪个分支的
-        // 再看看
     }
 
-    private class MyHandler extends Handler {
+    private static class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
